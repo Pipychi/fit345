@@ -1,0 +1,14 @@
+lib: hello.h hello.c
+	gcc -o libHello.so -shared -fPIC hello.c
+
+exe: main
+	gcc main.c -L. -lHello -o main
+
+
+build: hello.h hello.c main
+	gcc -o libHello.so -shared -fPIC hello.c
+	gcc main.c -L. -lHello -o main
+
+clean:	libHello.so main
+	rm libHello.so
+	rm main
